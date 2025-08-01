@@ -1,0 +1,37 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int maxSubArraySum(vector<int> &arr) {
+    int n=arr.size();
+    if(n<=0) return 0;
+    int maxSum = arr[0];
+    for(int start=0; start<n; start++) {
+        for(int end=start; end<n; end++){
+            int sum = 0;
+            for(int i=start; i<=end; i++){
+                sum+=arr[i];
+                maxSum= max(maxSum, sum); 
+            }
+        }
+    } return maxSum;
+    }
+    int main() {
+        cout<<"Enter the size of the array: " ;
+        int n;
+        cin>>n;
+        if(n<=0) {
+            cout<<"Enter a valid size greater than 0."<<endl;
+            return 0;
+        }
+        else {
+            vector<int> arr(n);
+            cout<<"Enter the elements of the array: ";
+            for(int i=0; i<n; i++) {
+                cin>>arr[i];
+            }
+            int result= maxSubArraySum(arr);
+            cout<<"Maximum subarray sum is: "<<result<<endl;
+            return 0;
+        }
+    }
+
