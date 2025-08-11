@@ -10,10 +10,10 @@ bool is_prime(int num) {
         if(num %i== 0) {
             return false;
         }
-        else {
-            return true;
 
-        }
+    return true;
+
+        
     }
 
 }
