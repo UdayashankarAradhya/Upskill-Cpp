@@ -120,6 +120,18 @@ Node* deleteByValue(Node* head, int value){
     return head;
 
 }
+Node* reverse(Node* head){
+    Node* curr=head;
+    Node* prev=NULL;
+    Node* next;
+    while(curr!=NULL){
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+    }
+    return prev;
+}
 int main(){
     Node* head = nullptr; 
     int choice;
@@ -134,6 +146,7 @@ int main(){
         cout << "5. Search for an element" << endl;
         cout << "6. Insert at any position" << endl;
         cout << "7. Delete by value" << endl;
+        cout << "8. Reverse the list" << endl;
         cout << "0. Exit" << endl;
         cout << "Choose an option: ";
         cin >> choice;
@@ -179,6 +192,9 @@ int main(){
                   cout<<"Enter value to delete: "<<endl;
                   cin>>data;
                   head=deleteByValue(head, data);
+                  break;
+            case 8:
+                  head=reverse(head);
                   break;
             case 0:
                 cout << "Exiting program." << endl;
