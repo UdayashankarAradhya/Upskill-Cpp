@@ -69,6 +69,57 @@ Node *takeinput(){
     return head;
 
 }
+Node *insertAtPosition(Node *head, int value, int pos){
+    Node* temp=new Node(value);
+    if(pos<0){
+        cout<<"Invalid Position"<<endl;
+        delete temp;
+        return head;
+    }
+    Node* curr=head;
+    if(pos==1){
+        temp->next=head;
+        return temp;
+    }
+    for(int i=1;i<pos-1 && curr!= NULL;i++){
+        curr=curr->next;
+    }
+    if(curr==NULL){
+        cout<<"Position out of bounds"<<endl;
+        delete temp;
+        return head;
+
+    }
+    temp->next=curr->next;
+    curr->next=temp;
+    return head;
+}
+Node* deleteByValue(Node* head, int value){
+    while(head!=NULL && head->data==value){
+        Node* temp=head;
+        head=head->next;
+        delete(temp);
+    }
+    if(head==NULL)
+    return NULL;
+    Node* curr=head->next;
+    Node* prev=head;
+    while(curr!=NULL){
+        if(curr->data==value){
+            prev->next=curr->next;
+            delete curr;
+            curr=prev->next;
+        }
+        else{
+            prev=curr;
+            curr=curr->next;
+        }
+        
+        
+    }
+    return head;
+
+}
 int main(){
     Node* head = nullptr; 
     int choice;
@@ -81,6 +132,8 @@ int main(){
         cout << "3. Insert at Head" << endl;
         cout << "4. Insert at Tail" << endl;
         cout << "5. Search for an element" << endl;
+        cout << "6. Insert at any position" << endl;
+        cout << "7. Delete by value" << endl;
         cout << "0. Exit" << endl;
         cout << "Choose an option: ";
         cin >> choice;
@@ -115,6 +168,18 @@ int main(){
                     cout << "Element " << data << " not found in the list." << endl;
                 }
                 break;
+            case 6: 
+                 cout<<"Enter the data to insert: "<<endl;
+                 cin>>data;
+                 cout<<"Enter the position to insert: "<<endl;
+                 cin>>position;
+                 head=insertAtPosition(head,data, position);
+                 break;
+            case 7:
+                  cout<<"Enter value to delete: "<<endl;
+                  cin>>data;
+                  head=deleteByValue(head, data);
+                  break;
             case 0:
                 cout << "Exiting program." << endl;
                 break;
