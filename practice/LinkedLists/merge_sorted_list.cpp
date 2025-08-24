@@ -37,10 +37,10 @@ public:
                 tail=tail->next;
                 
             }
-            if(list1!=nullptr){
+        if(list1!=nullptr){
                 tail->next=list1;
             }
-            else{
+        else{
                 tail->next=list2;
             }
             return dummy.next;
