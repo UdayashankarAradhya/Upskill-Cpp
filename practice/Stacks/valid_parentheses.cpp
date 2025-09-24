@@ -41,7 +41,7 @@ int main() {
     string s2 = "([{}])";
     string s3 = "(]";
     string s4 = "([)]";
-    string s5 = "{[}";
+    string s5 = "{[}";\
     string s6 = "{{";
     string s7 = ")";
 
